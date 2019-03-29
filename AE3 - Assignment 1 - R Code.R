@@ -19,6 +19,7 @@ print(paste0("Sigma: ", sigma))
 num_sim <- 10000
 lag.max <- 50
 sim_fd_X <- fracdiff::fracdiff.sim(n=num_sim, ar=ar, ma=-ma, d=d, rand.gen=function(n) (rnorm(n, mean=0, sd=sigma)))
+filtered_fd_X <- fracdiff::diffseries(fd_X, d)
 
 # Plot the simulated autocorrelation function for 50 lags.
 z <- acf(sim_fd_X$series, lag.max=lag.max)
